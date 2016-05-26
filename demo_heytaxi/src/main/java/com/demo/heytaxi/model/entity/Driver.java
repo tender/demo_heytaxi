@@ -1,4 +1,4 @@
-package com.demo.heytaxi.entity;
+package com.demo.heytaxi.model.entity;
 
 public class Driver {
 	

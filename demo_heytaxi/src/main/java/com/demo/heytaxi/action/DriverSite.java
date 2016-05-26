@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 
 import org.glassfish.jersey.server.JSONP;
 
-import com.demo.heytaxi.entity.Driver;
+import com.demo.heytaxi.model.entity.Driver;
 
 @Path("/driver")
 public class DriverSite {
