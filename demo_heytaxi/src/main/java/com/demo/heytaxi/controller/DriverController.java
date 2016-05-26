@@ -19,40 +19,40 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
  
-//    @RequestMapping("/")
-//    public ModelAndView handleRequest() throws Exception {
-//        List<User> listUsers = userDao.list();
-//        ModelAndView model = new ModelAndView("UserList");
-//        model.addObject("userList", listUsers);
-//        return model;
-//    }
-//     
-//    @RequestMapping(value = "/new", method = RequestMethod.GET)
-//    public ModelAndView newUser() {
-//        ModelAndView model = new ModelAndView("UserForm");
-//        model.addObject("user", new User());
-//        return model;      
-//    }
-//     
-//    @RequestMapping(value = "/edit", method = RequestMethod.GET)
-//    public ModelAndView editUser(HttpServletRequest request) {
-//        int userId = Integer.parseInt(request.getParameter("id"));
-//        User user = userDao.get(userId);
-//        ModelAndView model = new ModelAndView("UserForm");
-//        model.addObject("user", user);
-//        return model;      
-//    }
-//     
-//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-//    public ModelAndView deleteUser(HttpServletRequest request) {
-//        int userId = Integer.parseInt(request.getParameter("id"));
-//        userDao.delete(userId);
-//        return new ModelAndView("redirect:/");     
-//    }
-//     
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
-//    public ModelAndView saveUser(@ModelAttribute User user) {
-//        userDao.saveOrUpdate(user);
-//        return new ModelAndView("redirect:/");
-//    }   
+    @RequestMapping("/")
+    public ModelAndView handleRequest() throws Exception {
+        List<User> listUsers = driverService.list();
+        ModelAndView model = new ModelAndView("UserList");
+        model.addObject("userList", listUsers);
+        return model;
+    }
+     
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView newUser() {
+        ModelAndView model = new ModelAndView("UserForm");
+        model.addObject("user", new User());
+        return model;      
+    }
+     
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public ModelAndView editUser(HttpServletRequest request) {
+        Long userId = Long.parseLong(request.getParameter("id"));
+        User user = driverService.get(userId);
+        ModelAndView model = new ModelAndView("UserForm");
+        model.addObject("user", user);
+        return model;      
+    }
+     
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView deleteUser(HttpServletRequest request) {
+        Long userId = Long.parseLong(request.getParameter("id"));
+        driverService.delete(userId);
+        return new ModelAndView("redirect:/");     
+    }
+     
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView saveUser(@ModelAttribute User user) {
+    	driverService.saveOrUpdate(user);
+        return new ModelAndView("redirect:/");
+    }   
 }

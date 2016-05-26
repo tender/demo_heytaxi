@@ -22,7 +22,7 @@ import com.demo.heytaxi.service.DriverService;
 import com.demo.heytaxi.service.impl.DriverServiceImpl;
 
 @Configuration
-@ComponentScan("com.demo.heytaxi.config")
+@ComponentScan("com.demo.heytaxi")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 
@@ -38,9 +38,9 @@ public class ApplicationContextConfig {
 	public DataSource getDataSource() {
 	    BasicDataSource dataSource = new BasicDataSource();
 	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost:3306/usersdb");
+	    dataSource.setUrl("jdbc:mysql://localhost:3306/heytaxi");
 	    dataSource.setUsername("root");
-	    dataSource.setPassword("secret");
+	    dataSource.setPassword("p0o9i8u7y6");
 	 
 	    return dataSource;
 	}
@@ -52,6 +52,7 @@ public class ApplicationContextConfig {
 	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	 
 	    sessionBuilder.addAnnotatedClasses(User.class);
+	    sessionBuilder.addProperties(getHibernateProperties());
 	 
 	    return sessionBuilder.buildSessionFactory();
 	}
